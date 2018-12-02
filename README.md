@@ -74,8 +74,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 * [Vue](https://vuejs.org/index.html/)
 * [ECharts](http://echarts.baidu.com/option.html)
 * [Stylus](http://stylus-lang.com/)
-*https://medium.freecodecamp.org/how-to-build-a-single-page-application-using-vue-js-vuex-vuetify-and-firebase-838b40721a07
-* https://appdividend.com/2018/02/12/vuetify-tutorial-example-scratch/
+* [Vue example](https://medium.freecodecamp.org/how-to-build-a-single-page-application-using-vue-js-vuex-vuetify-and-firebase-838b40721a07)
+* [Vue example](https://appdividend.com/2018/02/12/vuetify-tutorial-example-scratch/)
 
 ### Donate
 If you find this project useful, you can buy author a glass of juice :tropical_drink:
