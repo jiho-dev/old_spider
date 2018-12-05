@@ -109,9 +109,9 @@ export default [
     )
   },  
   {
-    path: '/objects/ports',
+    path: '/objects/services',
     meta: { breadcrumb: true },
-    name: 'objects/ports',
+    name: 'objects/services',
     component: () => import(
       /* webpackChunkName: "routes" */
       /* webpackMode: "lazy-once" */
@@ -119,66 +119,4 @@ export default [
     )
   },  
 
-  {
-    path: '/widgets/statistic',
-    meta: { breadcrumb: true },
-    name: 'components/statistic',
-    component: () => import(
-      /* webpackChunkName: "routes" */
-      /* webpackMode: "lazy-once" */
-      `@/pages/widgets/Statistic.vue`
-    )
-  },
-  {
-    path: '/widgets/chart',
-    meta: { breadcrumb: true },
-    name: 'components/chart',
-    component: () => import(
-      /* webpackChunkName: "routes" */
-      /* webpackMode: "lazy-once" */
-      `@/pages/widgets/Chart.vue`
-    )
-  },
-
-
-  {
-    path: '/components/alert',
-    meta: { breadcrumb: true },
-    name: 'components/alerts',
-    component: () => import(
-      /* webpackChunkName: "routes" */
-      /* webpackMode: "lazy-once" */
-      `@/pages/ui/Alert.vue`
-    )
-  },
-  {
-    path: '/components/avatar',
-    meta: { breadcrumb: true },
-    name: 'components/avatars',
-    component: () => import(
-      /* webpackChunkName: "routes" */
-      /* webpackMode: "lazy-once" */
-      `@/pages/ui/Avatar.vue`
-    )
-  },
-  {
-    path: '/components/badge',
-    meta: { breadcrumb: true },
-    name: 'components/badges',
-    component: () => import(
-      /* webpackChunkName: "routes" */
-      /* webpackMode: "lazy-once" */
-      `@/pages/ui/Badge.vue`
-    )
-  },
-  {
-    path: '/components/button',
-    meta: { breadcrumb: true },
-    name: 'components/buttons',
-    component: () => import(
-      /* webpackChunkName: "routes" */
-      /* webpackMode: "lazy-once" */
-      `@/pages/ui/Button.vue`
-    )
-  },  
 ];

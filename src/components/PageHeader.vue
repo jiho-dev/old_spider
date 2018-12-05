@@ -1,9 +1,9 @@
 <template>
-  <v-layout row class="align-center layout px-4 pt-4 app--page-header">
+  <v-layout id="breadcrumb" row class="align-center layout px-4 pt-1 app--page-header">
     <div class="page-header-left">
-      <h3 class="pr-3">{{title}}</h3>
+      <h5 class="pr-3">{{title}}</h5>
     </div>
-    <v-breadcrumbs divider="-">
+    <v-breadcrumbs divider=">" drak="true">
       <v-breadcrumbs-item>
       <v-icon larg>home</v-icon>
       </v-breadcrumbs-item>
@@ -53,3 +53,23 @@ export default {
   }
 };
 </script>
+
+<style>
+
+.breadcrumb { 
+  list-style: none; 
+  overflow: hidden; 
+  font: 8px Sans-Serif;
+}
+
+.breadcrumb li a {
+  color: white;
+  text-decoration: none; 
+  padding: 10px 0 10px 65px;
+  background: brown; /* fallback color */
+  background: hsla(34,85%,35%,1); 
+  position: relative; 
+  display: block;
+  float: left;
+}
+</style>

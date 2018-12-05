@@ -4,7 +4,7 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4 lg4>
-            <v-card class="elevation-1 pa-3">
+            <v-card class="elevation-1 pa-3" width="400px">
               <v-card-text>
                 <div class="layout column align-center">
                   <img src="/static/m.png" alt="Vue Material Admin" width="120" height="120">
@@ -30,6 +30,7 @@
                  -->
                 <v-btn round block color="primary" @click="login" :loading="loading">
                   <v-icon class="ma-2">person</v-icon>
+                  <!-- <v-icon class="fas fa-stream"></v-icon> -->
                   Login
                 </v-btn>
               </v-card-actions>

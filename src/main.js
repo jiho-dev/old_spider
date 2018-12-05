@@ -7,9 +7,10 @@ import router from './router';
 import 'font-awesome/css/font-awesome.css';  
 import './theme/default.styl';
 import VeeValidate from 'vee-validate';
-import colors from 'vuetify/es5/util/colors';
+// import colors from 'vuetify/es5/util/colors';
 import Truncate from 'lodash.truncate';
 import store from './store';
+import '@fortawesome/fontawesome-free/css/all.css'; // Ensure you are using css-loader
 
 Vue.config.productionTip = false;
 // Helpers

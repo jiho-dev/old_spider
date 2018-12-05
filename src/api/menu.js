@@ -17,7 +17,7 @@ const Menu =  [
     items: [
       // { name: 'social', title: 'Social', component: 'components/social' },
       { name: 'profiles', title: 'Profiles', component: 'policies/profiles' },
-      { name: 'sessions', title: 'Session', component: 'policies/sessions' },
+      { name: 'sessions', title: 'Sessions', component: 'policies/sessions' },
       // { name: 'list', title: 'List', component: 'components/widget-list' },
       // { name: 'post', title: 'Post', component: 'components/widget-post' },
     ]
@@ -31,11 +31,12 @@ const Menu =  [
     items: [
       // { name: 'social', title: 'Social', component: 'components/social' },
       { name: 'networks', title: 'Networks', component: 'objects/networks' },
-      { name: 'ports', title: 'Ports', component: 'objects/ports' },
+      { name: 'services', title: 'Services', component: 'objects/services' },
       // { name: 'list', title: 'List', component: 'components/widget-list' },
       // { name: 'post', title: 'Post', component: 'components/widget-post' },
     ]
   }, 
+  /*
   { divider: true }, 
   { header: 'UI Elements' },  
   {
@@ -51,6 +52,8 @@ const Menu =  [
       // { name: 'post', title: 'Post', component: 'components/widget-post' },
     ]
   }, 
+  */
+  /*
   // { divider: true }, 
   // { header: 'UI Elements' },
   {
@@ -63,7 +66,6 @@ const Menu =  [
       { name: 'avatars', title: 'Avatars', component: 'components/avatars' },
       { name: 'badges', title: 'Badges', component: 'components/badges' },
       { name: 'buttons', title: 'Buttons', component: 'components/buttons' },
-      /*
       { name: 'cards', title: 'Cards', component: 'components/cards' },
       { name: 'carousels', title: 'Carousels', component: 'components/carousels' },
       { name: 'chips', title: 'Chips', component: 'components/chips' },
@@ -78,9 +80,9 @@ const Menu =  [
       { name: 'pagination', title: 'Pagination', component: 'components/paginations' },      
       { name: 'typography', title: 'Typography', component: 'components/typography' },      
       { name: 'color', title: 'Color', component: 'components/color' },      
-      */
     ]
   },
+  */
   /*
   {
     title: 'Pickers',
