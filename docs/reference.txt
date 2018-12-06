@@ -1,2 +1,5 @@
 ## tree grid ref:
 # https://github.com/MisterTaki/vue-table-with-tree-grid
+# https://codepen.io/kematzy/pen/gKVwwe
+# https://codepen.io/syed-haroon/pen/vdGExX
+# https://vuejsfeed.com/blog/comparison-of-datatable-solutions-for-vue-js
