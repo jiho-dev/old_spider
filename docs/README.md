@@ -10,4 +10,5 @@ tree grid4: https://vuejsfeed.com/blog/comparison-of-datatable-solutions-for-vue
 
 https://medium.com/vuetify/building-a-treeview-component-part-iii-2dabdfd6f0cd
 
+https://github.com/portablemind/vuetify_tree_data_table
 
