@@ -8,3 +8,8 @@ tree grid3: https://codepen.io/syed-haroon/pen/vdGExX
 
 tree grid4: https://vuejsfeed.com/blog/comparison-of-datatable-solutions-for-vue-js
 
+group table for vuetify
+https://codepen.io/lzhoucs/pen/aadaJx
+https://github.com/vuetifyjs/vuetify/pull/4966
+https://github.com/vuetifyjs/vuetify/issues/3180
+https://github.com/lzhoucs/vuetify
