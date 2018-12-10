@@ -17,18 +17,19 @@ const router =  new Router({
 // router gards
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  // next();
+  next();
+  return;
 
-  if (to.name === 'Login') {
-    next();
-    return;
-  }
-  else if (store.getters.isAuthenticated) {
-    next();
-    return;
-  }
+  // if (to.name === 'Login') {
+  //   next();
+  //   return;
+  // }
+  // else if (store.getters.isAuthenticated) {
+  //   next();
+  //   return;
+  // }
 
-  next('/login');
+  // next('/login');
 });
 
 router.afterEach((to, from) => {

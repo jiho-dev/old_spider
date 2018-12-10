@@ -105,7 +105,41 @@ export default [
     component: () => import(
       /* webpackChunkName: "routes" */
       /* webpackMode: "lazy-once" */
-      `@/pages/sample.vue`
+      // `@/pages/sample.vue`
+      `@/components/networkobj.vue`
+    )
+  },  
+  {
+    path: '/objects/networks1',
+    meta: { breadcrumb: true },
+    name: 'objects/networks1',
+    component: () => import(
+      /* webpackChunkName: "routes" */
+      /* webpackMode: "lazy-once" */
+      // `@/pages/sample.vue`
+      `@/components/networkobj1.vue`
+    )
+  },  
+  {
+    path: '/objects/networks2',
+    meta: { breadcrumb: true },
+    name: 'objects/networks2',
+    component: () => import(
+      /* webpackChunkName: "routes" */
+      /* webpackMode: "lazy-once" */
+      // `@/pages/sample.vue`
+      `@/components/networkobj2.vue`
+    )
+  },  
+  {
+    path: '/objects/networks3',
+    meta: { breadcrumb: true },
+    name: 'objects/networks3',
+    component: () => import(
+      /* webpackChunkName: "routes" */
+      /* webpackMode: "lazy-once" */
+      // `@/pages/sample.vue`
+      `@/components/networkobj3.vue`
     )
   },  
   {

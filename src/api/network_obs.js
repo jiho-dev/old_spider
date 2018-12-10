@@ -1,9 +1,4 @@
 export default [
-
-  // https://codepen.io/kematzy/pen/gKVwwe
-  // https://codepen.io/syed-haroon/pen/vdGExX
-  // https://vuejsfeed.com/blog/comparison-of-datatable-solutions-for-vue-js
-
   {
     'name': 'subnet1',
     'type': 'subnet', // group, subnet, range
