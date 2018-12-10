@@ -22,9 +22,6 @@
            this rowIndex is ${scope.rowIndex}.`
          }}
       </template>
-      <template slot="likes" scope="scope">
-        {{ scope.row.likes.join(',') }}
-      </template>
     </tg-table>
   </div>
 </template>
