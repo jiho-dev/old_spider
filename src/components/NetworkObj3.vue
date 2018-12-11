@@ -1,98 +1,124 @@
 <template>
   <div id="people">
-    <v-client-table :data="data" :columns="columns" :options="options"></v-client-table>
+      <!-- hide-actions -->
+    <v-data-table
+      :headers="headers"
+      :items="desserts"
+      item-key="name"
+      group-key="category"
+    >
+      <template slot="group" slot-scope="props">
+        <span class="font-weight-bold">Group {{props.groupIndex + 1}} - {{props.groupName}}</span>
+      </template>
+
+      <template slot="items" slot-scope="props">
+        <tr>
+          <td>{{ props.item.name }}</td>
+          <td>{{ props.item.calories }}</td>
+          <td>{{ props.item.fat }}</td>
+          <td>{{ props.item.carbs }}</td>
+          <td>{{ props.item.protein }}</td>
+          <td>{{ props.item.iron }}</td>
+        </tr>
+      </template>
+    </v-data-table>
   </div>
+
 </template>
 
 <script>
-// import { ServerTable, ClientTable, Event } from "vue-tables-2";
-import { ClientTable } from 'vue-tables-2';
-import Vue from 'vue';
-
-Vue.use(ClientTable);
-
 export default {
   name: 'people',
-  data () {
-    return {
-      columns: ['id', 'name', 'age', 'address.city'],
-      data: getData(),
-      options: {
-        headings: {
-          id: 'ID',
-          name: 'Country Name',
-          age: 'Age'
-          
-        },
-        // sortable: ['name', 'age'],
-        // filterable: ['name', 'age']
-        filterable: false,
-        // theme: 'bootstrap3',
-        skin: 'table-bordered'
+  methods: {
+      collapseAll() {
+        this.$refs.expandableTable.collapseAll()
       },
-      show: true
-    };
-  },
+      expandAll() {
+        this.$refs.expandableTable.expandAll()
+      }
+    },
+    data: () => ({
+      headers: [
+        { text: "Dessert (100g serving)", value: "name" },
+        { text: "Calories", value: "calories" },
+        { text: "Fat (g)", value: "fat" },
+        { text: "Carbs (g)", value: "carbs" },
+        { text: "Protein (g)", value: "protein" },
+        { text: "Iron (%)", value: "iron" }
+      ],
+      desserts: [
+        {
+          value: false,
+          name: "Orange Juice",
+          category: "Beverage",
+          calories: 262,
+          fat: 16.0,
+          carbs: 23,
+          protein: 6.0,
+          iron: "7%"
+        },
+        {
+          value: false,
+          name: "Larabar",
+          category: "Snack",
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          iron: "45%"
+        },
+        {
+          value: false,
+          name: "Donut",
+          category: "Breakfast",
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          iron: "22%"
+        },
 
-  computed: {},
-  methods: {}
-};
+        {
+          value: false,
+          name: "Bagel",
+          category: "Breakfast",
+          calories: 999,
+          fat: 28.0,
+          carbs: 151,
+          protein: 2.9,
+          iron: "29%"
+        },
+        {
+          value: false,
+          name: "KitKat",
+          category: "Snack",
+          calories: 518,
+          fat: 26.0,
+          carbs: 65,
+          protein: 7,
+          iron: "6%"
+        },
+        {
+          value: true,
+          name: "KitKat1",
+        //   category: "Snack",
+          calories: 518,
+          fat: 26.0,
+          carbs: 65,
+          protein: 7,
+          iron: "6%"
+        }
 
-function getData () {
-  return [
-    { id: 1, name: 'John', age: '20', address: { city: 'seoul', zip: '123-122'} },
-    { id: 2, name: 'Jane', age: '24' },
-    { id: 3, name: 'Susan', age: '16' },
-    { id: 4, name: 'Chris', age: '55' },
-    { id: 5, name: 'Dan', age: '40' }
-  ];
+      ],
+      groupSortDescending: false
+
+    })
 }
 
 </script>
 
 <style>
-#people {
-  text-align: center;
-  width: 95%;
-  margin: 0 auto;
-}
-h2 {
-  margin-bottom: 30px;
-}
-th,
-td {
-  text-align: left;
-}
-th:nth-child(n+2),
-td:nth-child(n+2) {
-  text-align: center;
-}
-thead tr:nth-child(2) th {
-  font-weight: normal;
-}
-.VueTables__sort-icon {
-  margin-left: 10px;
-}
-.VueTables__dropdown-pagination {
-  margin-left: 10px;
-}
-.VueTables__highlight {
-  background: yellow;
-  font-weight: normal;
-}
-.VueTables__sortable {
-  cursor: pointer;
-}
-.VueTables__date-filter {
-  border: 1px solid #ccc;
-  padding: 6px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.VueTables__filter-placeholder {
-  color: #aaa;
-}
-.VueTables__list-filter {
-  width: 120px;
+.section {
+  margin-top: 50px;
 }
 </style>
