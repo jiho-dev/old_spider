@@ -1,132 +1,172 @@
-<template lang="html">
-  <div id="netobjtable2">
-    <tg-table
-      ref="table"
-      sum-text="sum"
-      index-text="#"
-      :data="data"
-      :columns="columns"
-      :stripe="props.stripe"
-      :border="props.border"
-      :show-header="props.showHeader"
-      :show-summary="props.showSummary"
-      :show-row-hover="props.showRowHover"
-      :show-index="props.showIndex"
-      :tree-type="props.treeType"
-      :is-fold="props.isFold"
-      :expand-type="props.expandType"
-      :selection-type="props.selectionType"
-      >
-      <template slot="$expand" scope="scope">
-        {{ `My name is ${scope.row.name},
-           this rowIndex is ${scope.rowIndex}.`
-         }}
-      </template>
-    </tg-table>
-  </div>
+<template>
+<div class="container">
+    <h1>TOAST UI Grid + Vue</h1>
+    <grid :rowData="data"
+          :columnData="columns"
+          :options="options"
+          @check="onCheck"
+          @uncheck="onUnCheck"
+    ></grid>
+</div>
 </template>
-
 <script>
-import TgTable from 'vue-table-with-tree-grid'
-import Vue from 'vue'
+import 'tui-grid/dist/tui-grid.css'
+import { Grid } from '@toast-ui/vue-grid'
 
-Vue.use(TgTable)
-
-  export default {
-    name: 'netobjtable2',
+export default {
     components: {
-      TgTable,
+        'grid': Grid
     },
     data() {
-      return {
-        props: {
-          stripe: false,
-          border: true,
-          showHeader: true,
-          showSummary: false,
-          showRowHover: true,
-          showIndex: false,
-          treeType: true,
-          isFold: true,
-          expandType: false,
-          selectionType: true,
-        },
-        columns: [
-          {
-            label: 'Name',
-            prop: 'name',
-            width: '400px',
-            minWidth: '100px',
-          },
-          {
-            label: 'Address Type',
-            prop: 'address_type',
-            minWidth: '50px',
-          },
-          {
-            label: 'Address',
-            prop: 'address',
-          },
-          {
-            label: 'Comment',
-            prop: 'comment',
-          },
-
-        ],
-
-        data: [
-          {
-              'name': 'subnet1',
-              'type': 'subnet', // group, subnet, range
-              'address_type': 'v4',   // v4, v6
-              'address': '192.168.1.0',
-              'netmask': '255.255.255.0',
-              'comment': 'this is user comment'
-            },
-            {
-              'name': 'range1',
-              'type': 'range', // group, subnet, range
-              'address_type': 'v4',   // v4, v6    
-              'address': '192.168.1.11',
-              'netmask': '192.168.1.129',
-              'comment': 'this is user comment'    
-            },          
-            {
-              'name': 'group1',
-              'type': 'group', // group, subnet, range
-              'comment': 'This is Group object',
-              children: [
+        return {
+            columns: [
                 {
-                  'name': 'subrange',
-                  'type': 'range', // group, subnet, range
-                  'address_type': 'v4',   // v4, v6    
-                  'address': '192.168.1.11',
-                  'netmask': '192.168.1.129',
-                  'comment': 'this is user comment'    
-                },                          
+                    title: 'Name',
+                    name: 'name'
+                },
+                {
+                    title: 'Artist',
+                    name: 'artist'
+                },
+                {
+                    title: 'Personal Score',
+                    name: 'score',
+                    onBeforeChange(ev) {
+                        console.log('executes before the value changes : ', ev);
+                    },
+                    onAfterChange(ev) {
+                        console.log('executes after the value has changed : ', ev);
+                    },
+                    copyOptions: {
+                        useListItemText: true
+                    },
+                    editOptions: {
+                        type: 'radio',
+                        listItems: [
+                            {
+                                text: '★☆☆☆☆',
+                                value: '1'
+                            },
+                            {
+                                text: '★★☆☆☆',
+                                value: '2'
+                            },
+                            {
+                                text: '★★★☆☆',
+                                value: '3'
+                            },
+                            {
+                                text: '★★★★☆',
+                                value: '4'
+                            },
+                            {
+                                text: '★★★★★',
+                                value: '5'
+                            }
+                        ],
+                        useViewMode: true
+                    }
+                }
+            ],
+            data: [
+                {
+                    name: 'Kiss and Make Up',
+                    artist: 'Dua Lipa',
+                    score: '5',
+                     _extraData: {
+                        treeState: 'COLLAPSE' // 'COLLAPSE', EXPAND
+                      },
+                    _children: [
+                        {
+                            name: 'baz',
+                            artist: 'qux',
+                            score: '5',
+                            _children: true
+                        },
+                        {
+                            name: 'quux',
+                            artist: 'corge',
+                            score: '5',
+                            _children: true
+                        },
+                    ]
+                },
+                {
+                    name: 'Bohemian Rhapsody',
+                    artist: 'Queen',
+                    score: '2'
+                },
+                {
+                    name: 'Done For Me',
+                    artist: 'Charlie Puth',
+                    score: '3'
+                },
+                {
+                    name: 'thank u, next',
+                    artist: 'Ariana Grande',
+                    score: '4'
+                },
+                {
+                    name: 'Handclap',
+                    artist: 'Fitz & The Tantrums',
+                    score: '1'
+                },
+                {
+                    name: 'Shape Of You',
+                    artist: 'Ed Sheeran',
+                    score: '5'
+                },
+                {
+                    name: 'Snowman',
+                    artist: 'Sia',
+                    score: '5'
+                },
+                {
+                    name: 'Don\'t Stop Me Now ',
+                    artist: 'Queen',
+                    score: '3'
+                },
+                {
+                    name: 'Havana',
+                    artist: 'Camila Cabello',
+                    score: '2'
+                },
+                {
+                    name: 'A No No',
+                    artist: 'Mariah Carey',
+                    score: '5'
+                }
+            ],
+            options: {
+                usageStatistics: false,
+                selectionUnit: 'row',
+                treeColumnOptions: {
+                    name: 'name',
+                    useIcon: true,
+                    useCascadingCheckbox: true
+                },
+                columnOptions: {
 
-              ],
-            },
-        ],
-
-      };
-    },
-    computed: {
-      propList() {
-        return Object.keys(this.props).map(item => ({
-          name: item,
-        }));
-      },
+                },
+                rowHeaders: [
+                    {
+                        type: 'checkbox'
+                    }
+                ]
+            }
+        };
     },
     methods: {
+        onCheck(ev) {
+            console.log('check event: ', ev);
+        },
+        onUnCheck(ev) {
+            console.log('uncheck event: ', ev);
+        }
 
-    },
-  };
+    }
+};
 </script>
-
-<style scoped lang="less">
-  * {
-    margin: 0;
-    padding: 0;
-  }
+<style>
+@import 'https://uicdn.toast.com/tui-grid/latest/tui-grid.css';
 </style>

@@ -19,7 +19,7 @@
 <script>
 import Vue from "vue";
 // import VTreeDataTable from "v-tree-data-table";
-//import vTreeDataTable from 'v-tree-data-table';
+import vTreeDataTable from 'v-tree-data-table';
 
 Vue.use(vTreeDataTable);
 
