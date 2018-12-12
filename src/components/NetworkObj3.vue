@@ -7,8 +7,12 @@
       item-key="name"
       group-key="category"
     >
-      <template slot="group" slot-scope="props">
-        <span class="font-weight-bold">Group {{props.groupIndex + 1}} - {{props.groupName}}</span>
+      <template slot="group1" slot-scope="props1">
+        <!-- <span class="font-weight-bold">Group {{props.groupIndex + 1}} - {{props.groupName}}</span> -->
+        <tr>
+          <td>Group {{props.groupIndex + 1}}</td>
+          <td>{{props.groupName}}</td>
+        </tr>
       </template>
 
       <template slot="items" slot-scope="props">
@@ -22,6 +26,30 @@
         </tr>
       </template>
     </v-data-table>
+
+    <v-data-table
+      :headers="headers"
+      :items="no_group_desserts"
+      item-key="name"
+    >
+      <!-- <template slot="group" slot-scope="props">
+        <tr>
+          <td>Group {{props.groupIndex + 1}}</td>
+          <td>{{props.groupName}}</td>
+        </tr>
+      </template> -->
+
+      <template slot="items" slot-scope="props">
+        <tr>
+          <td>{{ props.item.name }}</td>
+          <td>{{ props.item.calories }}</td>
+          <td>{{ props.item.fat }}</td>
+          <td>{{ props.item.carbs }}</td>
+          <td>{{ props.item.protein }}</td>
+          <td>{{ props.item.children }}</td>
+        </tr>
+      </template>
+    </v-data-table>    
   </div>
 
 </template>
@@ -101,7 +129,7 @@ export default {
         {
           value: true,
           name: "KitKat1",
-        //   category: "Snack",
+          // category: "Snack",
           calories: 518,
           fat: 26.0,
           carbs: 65,
@@ -110,6 +138,43 @@ export default {
         }
 
       ],
+      no_group_desserts: [
+        {
+          value: false,
+          name: "Orange Juice",
+          category: "Beverage",
+          calories: 262,
+          fat: 16.0,
+          carbs: 23,
+          protein: 6.0,
+          iron: "7%",
+          children: [
+            {
+              name: "sub Orange Juice1",
+              category: "Beverage",
+              calories: 262,
+            },
+            {
+              name: "sub Orange Juice2",
+              category: "Beverage",
+              calories: 262,
+            },
+
+
+          ]
+        },
+        {
+          value: false,
+          name: "Larabar",
+          category: "Snack",
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          iron: "45%"
+        }
+      ],
+
       groupSortDescending: false
 
     })
