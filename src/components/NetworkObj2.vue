@@ -81,13 +81,13 @@ export default {
                             name: 'baz',
                             artist: 'qux',
                             score: '5',
-                            _children: true
+                            _children: false
                         },
                         {
                             name: 'quux',
                             artist: 'corge',
                             score: '5',
-                            _children: true
+                            _children: false
                         },
                     ]
                 },

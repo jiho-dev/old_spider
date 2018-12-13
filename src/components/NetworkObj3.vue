@@ -16,7 +16,7 @@
       </template>
 
       <template slot="items" slot-scope="props">
-        <tr>
+        <tr @click="onClick">
           <td>{{ props.item.name }}</td>
           <td>{{ props.item.calories }}</td>
           <td>{{ props.item.fat }}</td>
@@ -63,8 +63,12 @@ export default {
       },
       expandAll() {
         this.$refs.expandableTable.expandAll()
+      },    
+      onClick() {
+        console.log("onclick")
       }
     },
+
     data: () => ({
       headers: [
         { text: "Dessert (100g serving)", value: "name" },
