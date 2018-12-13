@@ -1,189 +1,143 @@
 <template>
   <div id="people">
-      <!-- hide-actions -->
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      item-key="name"
-      group-key="category"
-    >
-      <template slot="group1" slot-scope="props1">
-        <!-- <span class="font-weight-bold">Group {{props.groupIndex + 1}} - {{props.groupName}}</span> -->
-        <tr>
-          <td>Group {{props.groupIndex + 1}}</td>
-          <td>{{props.groupName}}</td>
-        </tr>
-      </template>
+    <!-- hide-actions -->
+    <v-card>
+      <v-card-title>Network Object
+        <v-spacer></v-spacer>
+        <v-text-field append-icon="search" label="Search" single-line hide-details v-model="search"></v-text-field>
+      </v-card-title>
 
-      <template slot="items" slot-scope="props">
-        <tr @click="onClick">
-          <td>{{ props.item.name }}</td>
-          <td>{{ props.item.calories }}</td>
-          <td>{{ props.item.fat }}</td>
-          <td>{{ props.item.carbs }}</td>
-          <td>{{ props.item.protein }}</td>
-          <td>{{ props.item.iron }}</td>
-        </tr>
-      </template>
-    </v-data-table>
+      <v-data-table :headers="headers" :items="desserts" :search="search" item-key="name">
+        <template slot="headers" slot-scope="props">
+          <tr>
+            <th>expand</th>
+            <th v-for="header in props.headers" :key="header.text">{{ header.text }}</th>
+          </tr>
+        </template>
 
-    <v-data-table
-      :headers="headers"
-      :items="no_group_desserts"
-      item-key="name"
-    >
-      <!-- <template slot="group" slot-scope="props">
-        <tr>
-          <td>Group {{props.groupIndex + 1}}</td>
-          <td>{{props.groupName}}</td>
-        </tr>
-      </template> -->
-
-      <template slot="items" slot-scope="props">
-        <tr>
-          <td>{{ props.item.name }}</td>
-          <td>{{ props.item.calories }}</td>
-          <td>{{ props.item.fat }}</td>
-          <td>{{ props.item.carbs }}</td>
-          <td>{{ props.item.protein }}</td>
-          <td>{{ props.item.children }}</td>
-        </tr>
-      </template>
-    </v-data-table>    
+        <template slot="items" slot-scope="props">
+          <tr>
+            <!-- <td class="justify-center layout px-0">
+            </td>-->
+            <td>
+              <v-btn v-if="props.item.children" icon class="mx-0" @click="onClick(props)">
+                <v-icon v-if="!props.item.expand" small color="blue">arrow_downward</v-icon>
+                <v-icon v-else small color="blue">arrow_upward</v-icon>
+              </v-btn>
+            </td>
+            <td>{{ props.item.name }}</td>
+            <td>{{ props.item.calories }}</td>
+            <td>{{ props.item.fat }}</td>
+            <td>{{ props.item.carbs }}</td>
+            <td>{{ props.item.protein }}</td>
+            <td>{{ props.item.iron }}</td>
+          </tr>
+        </template>
+        <v-alert
+          slot="no-results"
+          :value="true"
+          color="error"
+          icon="warning"
+        >
+        Your search for "{{ search }}" found no results.
+        </v-alert>
+      </v-data-table>
+    </v-card>
   </div>
-
 </template>
 
 <script>
 export default {
-  name: 'people',
-  methods: {
-      collapseAll() {
-        this.$refs.expandableTable.collapseAll()
+  name: "people",
+  data: () => ({
+    search: "",
+    headers: [
+      // {
+      //     text: '',
+      //     align: 'left',
+      //     sortable: false,
+      //     value: 'name',
+      //     width: "1%"
+      // },      
+      //  { text: "check", value: "expand" },
+      { text: "Dessert", value: "name" },
+      { text: "Calories", value: "calories" },
+      { text: "Fat (g)", value: "fat" },
+      { text: "Carbs (g)", value: "carbs" },
+      { text: "Protein (g)", value: "protein" },
+      { text: "Iron (%)", value: "iron" }
+    ],
+    desserts: [
+      {
+        value: false,
+        expand: false,
+        name: "Orange Juice",
+        category: "Beverage",
+        calories: 262,
+        fat: 16.0,
+        carbs: 23,
+        protein: 6.0,
+        iron: "7%",
+        children: [
+          {
+            value: false,
+            expand: false,
+            name: "Juice1",
+            category: "Beverage",
+            calories: 262,
+            fat: 16.0,
+            carbs: 23,
+            protein: 6.0,
+            iron: "7%",
+            children: false
+          },
+          {
+            value: false,
+            expand: false,
+            name: "Juice1",
+            category: "Beverage",
+            calories: 262,
+            fat: 16.0,
+            carbs: 23,
+            protein: 6.0,
+            iron: "7%",
+            children: false
+          }
+        ]
       },
-      expandAll() {
-        this.$refs.expandableTable.expandAll()
-      },    
-      onClick() {
-        console.log("onclick")
+      {
+        value: false,
+        expand: false,
+        name: "Larabar",
+        category: "Snack",
+        calories: 408,
+        fat: 3.2,
+        carbs: 87,
+        protein: 6.5,
+        iron: "45%",
+        children: false
       }
+    ],
+
+    groupSortDescending: false
+  }),
+
+  methods: {
+    collapseAll() {
+      this.$refs.expandableTable.collapseAll();
     },
-
-    data: () => ({
-      headers: [
-        { text: "Dessert (100g serving)", value: "name" },
-        { text: "Calories", value: "calories" },
-        { text: "Fat (g)", value: "fat" },
-        { text: "Carbs (g)", value: "carbs" },
-        { text: "Protein (g)", value: "protein" },
-        { text: "Iron (%)", value: "iron" }
-      ],
-      desserts: [
-        {
-          value: false,
-          name: "Orange Juice",
-          category: "Beverage",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%"
-        },
-        {
-          value: false,
-          name: "Larabar",
-          category: "Snack",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: "45%"
-        },
-        {
-          value: false,
-          name: "Donut",
-          category: "Breakfast",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: "22%"
-        },
-
-        {
-          value: false,
-          name: "Bagel",
-          category: "Breakfast",
-          calories: 999,
-          fat: 28.0,
-          carbs: 151,
-          protein: 2.9,
-          iron: "29%"
-        },
-        {
-          value: false,
-          name: "KitKat",
-          category: "Snack",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: "6%"
-        },
-        {
-          value: true,
-          name: "KitKat1",
-          // category: "Snack",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: "6%"
-        }
-
-      ],
-      no_group_desserts: [
-        {
-          value: false,
-          name: "Orange Juice",
-          category: "Beverage",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%",
-          children: [
-            {
-              name: "sub Orange Juice1",
-              category: "Beverage",
-              calories: 262,
-            },
-            {
-              name: "sub Orange Juice2",
-              category: "Beverage",
-              calories: 262,
-            },
-
-
-          ]
-        },
-        {
-          value: false,
-          name: "Larabar",
-          category: "Snack",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: "45%"
-        }
-      ],
-
-      groupSortDescending: false
-
-    })
-}
-
+    expandAll() {
+      this.$refs.expandableTable.expandAll();
+    },
+    onClick(props) {
+      console.log("onclick:" + props.item.name);
+      console.log("onclick:" + props.item.expand);
+      console.log("onclick:" + props.item.children);
+      props.item.expand = !props.item.expand;
+      // this.desserts.push(n);
+    }
+  }
+};
 </script>
 
 <style>
