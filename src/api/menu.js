@@ -34,6 +34,7 @@ const Menu =  [
       { name: 'networks1', title: 'Networks1', component: 'objects/networks1' },
       { name: 'networks2', title: 'Networks2', component: 'objects/networks2' },
       { name: 'networks3', title: 'Networks3', component: 'objects/networks3' },                  
+      { name: 'networks6', title: 'Networks6', component: 'objects/networks6' },                        
       { name: 'services', title: 'Services', component: 'objects/services' },
       // { name: 'list', title: 'List', component: 'components/widget-list' },
       // { name: 'post', title: 'Post', component: 'components/widget-post' },

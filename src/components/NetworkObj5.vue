@@ -1,5 +1,5 @@
 <template>
-  <div id="people">
+  <div id="people1">
     <v-client-table :data="data" :columns="columns" :options="options"></v-client-table>
   </div>
 </template>
@@ -12,7 +12,7 @@ import Vue from 'vue';
 Vue.use(ClientTable);
 
 export default {
-  name: 'people',
+  name: 'people1',
   data () {
     return {
       columns: ['id', 'name', 'age', 'address.city'],

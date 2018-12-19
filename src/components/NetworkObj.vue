@@ -7,10 +7,7 @@
         :filter="filterValue"
         :page="0"
         :classes="classes"
-        :total-rows="50"
       >
-        <!-- <template slot="firstName" slot-scope="props">{{ props.row.firstName }}</template> -->
-
         <template slot="title">
           <h4 class="leading-loose font-bold uppercase">Belgium</h4>
         </template>
@@ -23,17 +20,25 @@
             type="text"
             placeholder="Filter..."
           >
-        </template> -->
+        </template>-->
+        <template slot="selected" slot-scope="props">
+          <v-icon style="width: 10 rem " class="fas fa-plus-square" @click="props.row.selected = !props.row.selected"> </v-icon>
+        </template>
+        <template slot="firstName" slot-scope="props">
+         {{ props.row.firstName }}
+        </template>
+        <template slot="lastName" slot-scope="props">
+          {{ props.row.lastName }}
+        </template>
+
         <template slot="filter">
-          <h4><label>Filter:
-            <input
-              type="text"
-              placeholder="Filter..."
-              @input="debounceFilter($event)"
-          >
-          </label>
+          <h4>
+            <label>
+              Filter:
+              <input type="text" placeholder="Filter..." @input="debounceFilter($event)">
+            </label>
           </h4>
-        </template>        
+        </template>
         <template slot="pagination" slot-scope="props">
           <vue-ads-pagination
             :total-items="props.total"
@@ -44,8 +49,9 @@
           >
             <template slot-scope="props">
               <div
-                class="vue-ads-pr-2 vue-ads-leading-loose"
-              >Items {{ props.start }} tot {{ props.end }} van de {{ props.total }}</div>
+                class="vue-ads-pr-3 vue-ads-leading-loose"
+              >
+              {{ props.start }} - {{ props.end }} / {{ props.total }}</div>
             </template>
             <template slot="buttons" slot-scope="props">
               <vue-ads-page-button
@@ -65,7 +71,7 @@
 
 <script>
 import Vue from "vue";
-// import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
+import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
 import "../../node_modules/vue-ads-table-tree/dist/vue-ads-table-tree.css";
 import VueAdsPagination from "vue-ads-pagination";
 import { VueAdsPageButton } from "vue-ads-pagination";
@@ -85,7 +91,7 @@ export default {
   },
   data() {
     return {
-      page: 1,
+      page: 0,
       filterValue: "",
       classes: {
         table: {
@@ -119,10 +125,19 @@ export default {
       },
       columns: [
         {
+          property: "selected",
+          title: "Select",
+          sortable: false,
+          filterable: false,
+          collapseIcon: false,
+        },
+
+        {
           property: "firstName",
           title: "First Name",
           sortable: true,
-          filterable: true
+          filterable: true,
+          collapseIcon: true,
         },
         {
           property: "lastName",
@@ -134,15 +149,18 @@ export default {
       rows: [
         {
           firstName: "Josephine",
-          lastName: "Astrid"
+          lastName: "Astrid",
+          selected: false
         },
         {
           firstName: "Boudewijn",
-          lastName: "Van Brabandt"
+          lastName: "Van Brabandt",
+          selected: false
         },
         {
           firstName: "Albert II",
           lastName: "Van Belgie",
+          selected: false,
           children: [
             {
               firstName: "Filip",
@@ -163,7 +181,7 @@ export default {
                 {
                   firstName: "Eleonore",
                   lastName: "Boudwijn",
-                  hasChildren: true
+                  hasChildren: false
                 }
               ]
             },
@@ -179,39 +197,13 @@ export default {
         },
         {
           firstName: "Alexander",
-          lastName: "Van Belgie"
+          lastName: "Van Belgie",
+          selected: false
         },
         {
           firstName: "Marie-Christine",
-          lastName: "Leopoldine"
-        },
-        {
-          firstName: "Marie-Esmeralda",
-          lastName: "Leopoldine"
-        },
-        {
-          firstName: "Alexander",
-          lastName: "Van Belgie"
-        },
-        {
-          firstName: "Marie-Christine",
-          lastName: "Leopoldine"
-        },
-        {
-          firstName: "Marie-Esmeralda",
-          lastName: "Leopoldine"
-        },
-        {
-          firstName: "Alexander",
-          lastName: "Van Belgie"
-        },
-        {
-          firstName: "Marie-Christine",
-          lastName: "Leopoldine"
-        },
-        {
-          firstName: "Marie-Esmeralda",
-          lastName: "Leopoldine"
+          lastName: "Leopoldine",
+          selected: false
         }
       ]
     };

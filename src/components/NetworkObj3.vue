@@ -10,7 +10,7 @@
       <v-data-table :headers="headers" :items="desserts" :search="search" item-key="name">
         <template slot="headers" slot-scope="props">
           <tr>
-            <th>expand</th>
+            <th></th>
             <th v-for="header in props.headers" :key="header.text">{{ header.text }}</th>
           </tr>
         </template>
@@ -38,9 +38,7 @@
           :value="true"
           color="error"
           icon="warning"
-        >
-        Your search for "{{ search }}" found no results.
-        </v-alert>
+        >Your search for "{{ search }}" found no results.</v-alert>
       </v-data-table>
     </v-card>
   </div>
@@ -58,7 +56,7 @@ export default {
       //     sortable: false,
       //     value: 'name',
       //     width: "1%"
-      // },      
+      // },
       //  { text: "check", value: "expand" },
       { text: "Dessert", value: "name" },
       { text: "Calories", value: "calories" },
@@ -134,6 +132,18 @@ export default {
       console.log("onclick:" + props.item.expand);
       console.log("onclick:" + props.item.children);
       props.item.expand = !props.item.expand;
+      // const index = this.desserts.findIndex(x => x.name == props.item.name);
+      // function findIdx(a, k, n) {
+      //   for (var i = 0; i < a.length; i++) {
+      //     if (a[i][k] == n) {
+      //       return i;
+      //     }
+      //   }
+      //   return -1;
+      // }
+
+      // var index = findIdx(this.desserts, "name", props.item.name);
+      // console.log("name=" + props.item.name + ",idx=" + index);
       // this.desserts.push(n);
     }
   }

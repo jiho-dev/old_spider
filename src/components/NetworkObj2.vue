@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="tui1" class="container">
     <h1>TOAST UI Grid + Vue</h1>
     <grid
       :rowData="data"
@@ -15,6 +15,7 @@ import "tui-grid/dist/tui-grid.css";
 import { Grid } from "@toast-ui/vue-grid";
 
 export default {
+  name: 'tui1',
   components: {
     grid: Grid
   },

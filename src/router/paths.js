@@ -143,6 +143,14 @@ export default [
     )
   },  
   {
+    path: '/objects/networks6',
+    meta: { breadcrumb: true },
+    name: 'objects/networks6',
+    component: () => import(
+      `@/components/networkobj6.vue`
+    )
+  },  
+  {
     path: '/objects/services',
     meta: { breadcrumb: true },
     name: 'objects/services',
