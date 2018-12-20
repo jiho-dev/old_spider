@@ -34,3 +34,5 @@ https://blog.bitsrc.io/best-vue-js-ui-frameworks-and-component-libraries-part-2-
 https://jsfiddle.net/fernando2684/p0k8szvj/43/  
 
 
+https://medium.com/the-web-tub/choosing-the-right-front-end-framework-for-your-vue-app-4448bac12ce7  
+
